@@ -3,41 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>熊大金融 - 線上理專 Demo</title>
+    <title>熊大金融 - eKYC 視訊理專 Demo</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
 
-    <div class="w-full max-w-md bg-[#7494C0] rounded-lg shadow-xl overflow-hidden flex flex-col h-[600px]">
-        <div class="bg-[#243447] text-white p-4 flex items-center">
+    <div id="main-container" class="w-full max-w-md bg-[#7494C0] rounded-lg shadow-xl overflow-hidden flex flex-col h-[650px]">
+        
+        <div class="bg-[#243447] text-white p-4 flex items-center justify-between">
             <span class="font-bold">熊大金融理專</span>
+            <span class="text-xs opacity-70">LINE Planet 演示</span>
         </div>
 
-        <div class="flex-1 p-4 space-y-4 overflow-y-auto">
-            <div class="flex justify-end">
-                <div class="bg-[#84EE73] p-2 rounded-lg text-sm shadow-sm">聯絡理專</div>
-            </div>
-
-            <div class="flex justify-start">
+        <div id="content-area" class="flex-1 p-4 overflow-y-auto bg-[#7494C0]">
+            <div id="step-1" class="space-y-4">
+                <div class="flex justify-end"><div class="bg-[#84EE73] p-2 rounded-lg text-sm">聯絡理專</div></div>
                 <div class="bg-white rounded-xl shadow-lg w-72 overflow-hidden border border-gray-200">
-                    <img src="https://placehold.co/600x400/06C755/white?text=Bear+Financial" alt="Hero" class="w-full">
+                    <img src="https://placehold.co/600x400/06C755/white?text=Bear+Financial" class="w-full">
                     <div class="p-4">
                         <h3 class="font-bold text-lg">熊大金融 - 視訊理專</h3>
                         <p class="text-sm text-gray-500 mt-2">即刻開啟視訊通話，為您提供專業理財諮詢與 eKYC 身分驗證服務。</p>
-                        <button onclick="startCall()" class="w-full mt-4 bg-[#06C755] text-white py-2 rounded-md font-bold hover:bg-[#05a346] transition">
-                            開始通話
-                        </button>
+                        <button onclick="showTerms()" class="w-full mt-4 bg-[#06C755] text-white py-2 rounded-md font-bold">開始通話</button>
                     </div>
                 </div>
+            </div>
+
+            <div id="step-2" class="hidden bg-white rounded-xl p-6 shadow-lg h-full flex flex-col">
+                <h3 class="font-bold text-lg border-b pb-2 mb-4">視訊服務條款</h3>
+                <div class="flex-1 text-sm text-gray-600 overflow-y-auto mb-4">
+                    <p class="mb-2">1. 本視訊通話將進行**全程錄音與錄影**，以確保您的交易安全與合規要求。</p>
+                    <p class="mb-2">2. 通話過程中請準備好您的身分證件以便進行 **eKYC 認證**。</p>
+                    <p>3. 點擊同意即表示您已閱讀並接受個人資料保護政策。</p>
+                </div>
+                <div class="flex items-center mb-4">
+                    <input type="checkbox" id="agree-check" class="mr-2 w-5 h-5">
+                    <label for="agree-check" class="text-sm font-medium">我已了解並同意錄音與相關條款</label>
+                </div>
+                <button onclick="goToCallPage()" class="w-full bg-[#06C755] text-white py-3 rounded-md font-bold">確認同意</button>
+            </div>
+
+            <div id="step-3" class="hidden bg-white rounded-xl p-8 shadow-lg text-center h-full flex flex-col justify-center">
+                <div class="mb-6">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">📞</span>
+                    </div>
+                    <h3 class="font-bold text-xl">準備好開始了嗎？</h3>
+                    <p class="text-gray-500 mt-2">理專已在線上準備為您服務</p>
+                </div>
+                <button onclick="launchPlanetCall()" class="w-full bg-[#06C755] text-white py-4 rounded-xl font-bold text-lg shadow-lg">開始視訊</button>
             </div>
         </div>
     </div>
 
     <script>
-        function startCall() {
-            // 直接導向你提供的視訊連結
-            const targetUrl = "https://viva-connect-test.vercel.app/?liff.referrer=https%3A%2F%2Fjorden0205.github.io%2F";
-            window.location.href = targetUrl;
+        function showTerms() {
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.remove('hidden');
+        }
+
+        function goToCallPage() {
+            const isAgreed = document.getElementById('agree-check').checked;
+            if (!isAgreed) {
+                alert('請先勾選同意條款才能進行下一步');
+                return;
+            }
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.remove('hidden');
+        }
+
+        function launchPlanetCall() {
+            const planetUrl = "https://viva-connect-test.vercel.app/?liff.referrer=https%3A%2F%2Fjorden0205.github.io%2F";
+            window.location.href = planetUrl;
         }
     </script>
 </body>
