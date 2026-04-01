@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊大金融 - 線上理專 Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-md bg-[#7494C0] rounded-lg shadow-xl overflow-hidden flex flex-col h-[600px]">
+        <div class="bg-[#243447] text-white p-4 flex items-center">
+            <span class="font-bold">熊大金融理專</span>
+        </div>
+
+        <div class="flex-1 p-4 space-y-4 overflow-y-auto">
+            <div class="flex justify-end">
+                <div class="bg-[#84EE73] p-2 rounded-lg text-sm shadow-sm">聯絡理專</div>
+            </div>
+
+            <div class="flex justify-start">
+                <div class="bg-white rounded-xl shadow-lg w-72 overflow-hidden border border-gray-200">
+                    <img src="https://placehold.co/600x400/06C755/white?text=Bear+Financial" alt="Hero" class="w-full">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg">熊大金融 - 視訊理專</h3>
+                        <p class="text-sm text-gray-500 mt-2">即刻開啟視訊通話，為您提供專業理財諮詢與 eKYC 身分驗證服務。</p>
+                        <button onclick="startCall()" class="w-full mt-4 bg-[#06C755] text-white py-2 rounded-md font-bold hover:bg-[#05a346] transition">
+                            開始通話
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startCall() {
+            // 直接導向你提供的視訊連結
+            const targetUrl = "https://viva-connect-test.vercel.app/?liff.referrer=https%3A%2F%2Fjorden0205.github.io%2F";
+            window.location.href = targetUrl;
+        }
+    </script>
+</body>
+</html>
